@@ -44,6 +44,20 @@ pub fn create_tree(ls: Vec<Option<i32>>) -> MaybeNode {
     }
     root
 }
+pub fn flatten_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Option<i32>> {
+	let mut v = Vec::new();
+	let mut q = VecDeque::new();
+	q.push_back(root);
+	while let Some(n) = q.pop_front() { 
+		v.push(if let Some(n) = n {
+			let r = n.borrow();
+			q.push_back(r.left.clone());
+			q.push_back(r.right.clone());
+			Some(r.val)
+		} else { None });
+	}
+	v
+}
 #[cfg(test)]
 mod tests {
     #[test]
