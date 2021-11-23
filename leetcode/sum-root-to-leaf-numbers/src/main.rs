@@ -6,6 +6,6 @@ fn main() {
         (vec![4,9,0,5,1], 1026),
     ] {
         assert_eq!(Solution::sum_numbers(create_tree(
-            inp.into_iter().map(|v| Some(v)).collect())), out);
+            inp.into_iter().map(Some).collect())), out);
     }
 }

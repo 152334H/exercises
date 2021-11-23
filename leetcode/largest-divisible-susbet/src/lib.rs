@@ -22,7 +22,7 @@ impl Solution {
                 max_idx = i;
             }
         }
-        dp[max_idx].sort();
+        dp[max_idx].sort_unstable();
         dp[max_idx].clone()
     }
 }

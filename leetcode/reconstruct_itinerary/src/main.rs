@@ -1,5 +1,4 @@
-use std::collections::{HashMap,VecDeque,BinaryHeap};
-use std::convert::TryInto;
+use std::collections::{HashMap,BinaryHeap};
 use std::cmp::Reverse;
 struct Solution<'a> {
     examples: Vec<(Vec<Vec<&'a str>>, Vec<&'a str>)>
@@ -9,14 +8,13 @@ impl Solution<'_> {
         let mut adjls: HashMap<&str,_> = HashMap::new();
         let mut vis = HashMap::new();
         macro_rules! ctr { ($u:expr) => { vis.entry($u).or_insert(0) }; }
-        macro_rules! get { ($u:expr) => { adjls.entry($u).or_insert_with(|| BinaryHeap::new()) };}
+        macro_rules! get { ($u:expr) => { adjls.entry($u).or_insert_with(BinaryHeap::new) };}
         for t in &tickets {
             get!(t[0].as_str()).push(Reverse(t[1].as_str()));
             *ctr!(t[1].as_str())+=1;
         }
         //
-        let mut q = Vec::new();
-        q.push("JFK");
+        let mut q = vec!["JFK"];
         *ctr!("JFK")+=1;
         let mut euler_path = Vec::new();
         while !q.is_empty() {

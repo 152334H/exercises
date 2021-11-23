@@ -3,7 +3,7 @@ pub fn smallest_string_with_swaps(s: String, pairs: Vec<Vec<i32>>) -> String {
     let mut adjls = HashMap::new();
     macro_rules! getentry {
         ($u:expr) => {
-            adjls.entry($u).or_insert(Vec::new());
+            adjls.entry($u).or_insert_with(Vec::new);
         };
     }
     for e in pairs {
