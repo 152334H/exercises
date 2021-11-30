@@ -1,2 +1,4 @@
 /*/*/target
+/*/*/Cargo.toml
+/*/*/Cargo.lock
 /my_utils/target
