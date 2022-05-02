@@ -2,6 +2,7 @@
 import os
 import sys
 from io import BytesIO, IOBase
+from typing import *
 
 # === fastio ===
 BUFSIZE = 8192
