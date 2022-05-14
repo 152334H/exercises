@@ -80,13 +80,13 @@ def bootstrap(f, stack=[]):
 
 # === personal ===
 from functools import *
+from itertools import *
 ints = lambda: map(int, input().split())
 Ints = lambda: list(ints())
 Map = lambda f,it: list(map(f, it))
-Filter = lambda f,it: list(filter(f, it))
 Reversed = lambda it: list(reversed(it))
 
-def sum_array(ls: int) -> List[int]: return [0] + list(accumulate(ls))
+def sum_array(ls: List[int]) -> List[int]: return [0] + list(accumulate(ls))
 class SAT(list):
     ''' summed array table of a 2d matrix
     !!! (y,x) !!! '''
@@ -111,5 +111,4 @@ def solve():
 
 for t in range(int(input())):
     print(solve())
-
 
